@@ -1,2 +1,2 @@
-# semantic_segmentation_demo
-Semantic Segmentation with ResNet-18
+
+Semantic Segmentation code with various models and backends
