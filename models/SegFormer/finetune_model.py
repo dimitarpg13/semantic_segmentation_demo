@@ -18,7 +18,8 @@ def main():
     test_ds = ds["test"]
 
     repo_id = "huggingface/label-files"
-    filename = "ade20k-id2label.json"
+    #filename = "ade20k-id2label.json"
+    filename = "maskformer-ade20k-full-id2label.json"
     id2label = json.load(open(cached_download(hf_hub_url(repo_id, filename, repo_type="dataset")), "r"))
     id2label = {int(k): v for k, v in id2label.items()}
     label2id = {v: k for k, v in id2label.items()}
@@ -100,6 +101,7 @@ def main():
         eval_dataset=test_ds,
         compute_metrics=compute_metrics,
     )
+
     trainer.train()
 
 
