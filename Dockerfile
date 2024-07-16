@@ -37,4 +37,7 @@ RUN /bin/bash -c "echo 'export PYENV_ROOT=\"\$HOME/.pyenv\"' >> ~/.bashrc; \
                   echo '[[ -d \$PYENV_ROOT/bin ]] && export PATH=\"\$PYENV_ROOT/bin:\$PATH\"' >> ~/.bashrc; \
                   echo 'eval \"\$(pyenv init -)\"' >> ~/.bashrc"
 
+ARG PYTHON_VER="3.10.14"
+
+RUN /bin/bash -c "\$HOME/.pyenv/bin/pyenv install ${PYTHON_VER}"
 
