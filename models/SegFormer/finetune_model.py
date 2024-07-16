@@ -1,5 +1,6 @@
 from datasets import load_dataset
 import json
+import numpy as np
 from huggingface_hub import notebook_login
 from huggingface_hub import cached_download, hf_hub_url
 from transformers import AutoImageProcessor
