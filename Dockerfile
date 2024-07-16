@@ -20,18 +20,21 @@ RUN apt-get update -y && \
         liblzma-dev \
         python3-pip \
         git-all \
-        vim # && \ 
-   # rm -fr /var/lib/apt/lists
+        vim 
 
 # alias python2 to python3
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Install Poetry
-RUN mkdir -p /home/poetry && \
-    curl -sSL https://install.python-poetry.org | POETRY_HOME=/home/poetry python -
-
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # Install PyEnv
 RUN curl https://pyenv.run | bash
+
+RUN /bin/bash -c "echo 'export PATH=\"/\$HOME/.local/bin:\$PATH\"' >> ~/.bashrc"
+
+RUN /bin/bash -c "echo 'export PYENV_ROOT=\"\$HOME/.pyenv\"' >> ~/.bashrc; \
+                  echo '[[ -d \$PYENV_ROOT/bin ]] && export PATH=\"\$PYENV_ROOT/bin:\$PATH\"' >> ~/.bashrc; \
+                  echo 'eval \"\$(pyenv init -)\"' >> ~/.bashrc"
 
 
